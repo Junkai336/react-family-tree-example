@@ -9,6 +9,8 @@ import testTreeN1 from 'relatives-tree/samples/test-tree-n1.json';
 import testTreeN2 from 'relatives-tree/samples/test-tree-n2.json';
 import type { Node } from 'relatives-tree/lib/types';
 
+import jse from './FamilyTree/jse.json';
+
 export const NODE_WIDTH = 70;
 export const NODE_HEIGHT = 80;
 
@@ -22,6 +24,7 @@ export const SOURCES = {
   'simple-family.json': simpleFamily,
   'test-tree-n1.json': testTreeN1,
   'test-tree-n2.json': testTreeN2,
+  'jse.json': jse,
 } as Readonly<{ [key: string]: readonly Readonly<Node>[] }>;
 
 export const DEFAULT_SOURCE = Object.keys(SOURCES)[0];

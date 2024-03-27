@@ -1,5 +1,4 @@
 import React, { useMemo, useState, useCallback } from 'react';
-import type { Node, ExtNode } from 'relatives-tree/lib/types';
 import treePackage from 'relatives-tree/package.json';
 import ReactFamilyTree from 'react-family-tree';
 import { SourceSelect } from '../SourceSelect/SourceSelect';
@@ -19,13 +18,13 @@ export default React.memo(
     const firstNodeId = useMemo(() => nodes[0].id, [nodes]);
     const [rootId, setRootId] = useState(firstNodeId);
 
-    const [selectId, setSelectId] = useState<string>();
-    const [hoverId, setHoverId] = useState<string>();
+    const [selectId, setSelectId] = useState();
+    const [hoverId, setHoverId] = useState();
 
     const resetRootHandler = useCallback(() => setRootId(firstNodeId), [firstNodeId]);
 
     const changeSourceHandler = useCallback(
-      (value: string, nodes: readonly Readonly<Node>[]) => {
+      (value, nodes) => {
         setRootId(nodes[0].id);
         setNodes(nodes);
         setSource(value);
@@ -64,7 +63,7 @@ export default React.memo(
               width={NODE_WIDTH}
               height={NODE_HEIGHT}
               className={css.tree}
-              renderNode={(node: Readonly<ExtNode>) => (
+              renderNode={(node) => (
                 <FamilyNode
                   key={node.id}
                   node={node}
@@ -94,5 +93,5 @@ export default React.memo(
         )}
       </div>
     );
-  },
+  }
 );
